@@ -1,0 +1,430 @@
+stop_and_go
+
+200,000 Bandwidth
+1. 
+Receiver:
+1740508760.8845277
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 609
+Total Bytes Transmitted		: 606229
+Total Time					: 141.54 secs
+
+Sender
+1740508765.1393692
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 616169 bytes
+Overhead					: 25844 bytes
+Number of Packets sent		: 620
+Total Time					: 142.2 secs
+Goodput					: 4151.39 bytes/sec
+
+2.
+Receiver:
+1740509123.0047328
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 609
+Total Bytes Transmitted		: 606229
+Total Time					: 143.48 secs
+
+Monitor:
+1740509126.6034176
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 618157 bytes
+Overhead					: 27832 bytes
+Number of Packets sent		: 622
+Total Time					: 144.14 secs
+Goodput					: 4095.6 bytes/sec
+
+3.
+Receiver:
+1740509777.8363152
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 609
+Total Bytes Transmitted		: 606229
+Total Time					: 144.51 secs
+
+Sender:
+1740509780.8857846
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 622133 bytes
+Overhead					: 31808 bytes
+Number of Packets sent		: 626
+Total Time					: 145.17 secs
+Goodput					: 4066.46 bytes/sec
+
+4.
+Receiver:
+1740510402.2049205
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 602
+Total Bytes Transmitted		: 599271
+Total Time					: 140.6 secs
+
+Sender:
+1740510406.4003437
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 613187 bytes
+Overhead					: 22862 bytes
+Number of Packets sent		: 617
+Total Time					: 141.7 secs
+Goodput					: 4166.14 bytes/sec
+
+5.
+Receiver:
+1740510830.3701143
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 608
+Total Bytes Transmitted		: 605235
+Total Time					: 143.04 secs
+
+Sender:
+1740510833.8541725
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 617163 bytes
+Overhead					: 26838 bytes
+Number of Packets sent		: 621
+Total Time					: 143.7 secs
+Goodput					: 4108.04 bytes/sec
+
+20,000 Bandwidth
+
+1.
+Receiver:
+1740511835.7761302
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 609
+Total Bytes Transmitted		: 606229
+Total Time					: 150.26 secs
+
+Sender: 
+1740511839.8663843
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 621139 bytes
+Overhead					: 30814 bytes
+Number of Packets sent		: 625
+Total Time					: 151.11 secs
+Goodput					: 3906.69 bytes/sec
+
+2. 
+Receiver:
+1740512409.1202695
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 611
+Total Bytes Transmitted		: 608217
+Total Time					: 148.09 secs
+
+Sender:
+1740512412.1597695
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 619151 bytes
+Overhead					: 28826 bytes
+Number of Packets sent		: 623
+Total Time					: 148.94 secs
+Goodput					: 3963.6 bytes/sec
+
+3.
+Receiver:
+1740513177.496277
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 611
+Total Bytes Transmitted		: 609211
+Total Time					: 154.33 secs
+
+Sender:
+1740513183.038313
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 628097 bytes
+Overhead					: 37772 bytes
+Number of Packets sent		: 632
+Total Time					: 155.78 secs
+Goodput					: 3789.46 bytes/sec
+
+4. 
+Receiver:
+1740513617.61025
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 606
+Total Bytes Transmitted		: 603247
+Total Time					: 149.09 secs
+
+Sender:
+1740513621.1519413
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 620145 bytes
+Overhead					: 29820 bytes
+Number of Packets sent		: 624
+Total Time					: 149.93 secs
+Goodput					: 3937.27 bytes/sec
+
+5. 
+Receiver:
+1740513900.0594609
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 607
+Total Bytes Transmitted		: 605235
+Total Time					: 148.18 secs
+
+Sender:
+1740513906.7018197
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 619151 bytes
+Overhead					: 28826 bytes
+Number of Packets sent		: 623
+Total Time					: 149.64 secs
+Goodput					: 3944.86 bytes/sec
+
+2,000 Bandwidth
+
+1.
+Receiver:
+1740514872.5404644
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 606
+Total Bytes Transmitted		: 603247
+Total Time					: 361.91 secs
+
+Sender:
+1740514876.6290946
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 611199 bytes
+Overhead					: 20874 bytes
+Number of Packets sent		: 615
+Total Time					: 364.6 secs
+Goodput					: 1619.1 bytes/sec
+
+2.
+Receiver:
+1740515404.9518237
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 603
+Total Bytes Transmitted		: 600265
+Total Time					: 405.44 secs
+
+Sender:
+1740515409.1791894
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 616169 bytes
+Overhead					: 25844 bytes
+Number of Packets sent		: 620
+Total Time					: 408.13 secs
+Goodput					: 1446.4 bytes/sec
+
+3.
+Receiver:
+1740515893.7103627
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 604
+Total Bytes Transmitted		: 604241
+Total Time					: 362.5 secs
+
+Sender:
+1740515899.2018712
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 615175 bytes
+Overhead					: 24850 bytes
+Number of Packets sent		: 619
+Total Time					: 375.03 secs
+Goodput					: 1574.09 bytes/sec
+
+4.
+Receiver:
+1740516780.3510208
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 606
+Total Bytes Transmitted		: 602253
+Total Time					: 385.58 secs
+
+Sender:
+1740516783.6170661
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 621139 bytes
+Overhead					: 30814 bytes
+Number of Packets sent		: 625
+Total Time					: 385.82 secs
+Goodput					: 1530.05 bytes/sec
+
+5. 
+Receiver:
+1740524641.92999
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 603
+Total Bytes Transmitted		: 599160
+Total Time					: 364.3 secs
+
+Sender:
+1740524644.6384678
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 611088 bytes
+Overhead					: 20763 bytes
+Number of Packets sent		: 615
+Total Time					: 364.52 secs
+Goodput					: 1619.47 bytes/sec
+
+
+My Protocol
+
+1.
+Receiver:
+1740690470.9897048
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 626
+Total Bytes Transmitted		: 601346
+Total Time					: 58.52 secs
+
+Sender:
+1740690474.240442
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 610966 bytes
+Overhead					: 20641 bytes
+Number of Packets sent		: 637
+Total Time					: 58.82 secs
+Goodput					: 10036.18 bytes/sec
+
+2.
+Receiver:
+1740690664.6195955
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 632
+Total Bytes Transmitted		: 607118
+Total Time					: 54.36 secs
+
+Sender:
+1740690667.5946655
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 616738 bytes
+Overhead					: 26413 bytes
+Number of Packets sent		: 643
+Total Time					: 54.64 secs
+Goodput					: 10803.67 bytes/sec
+
+3.
+Receiver:
+1740690765.8859818
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 628
+Total Bytes Transmitted		: 603270
+Total Time					: 53.32 secs
+
+Sender:
+1740690768.4470177
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 613852 bytes
+Overhead					: 23527 bytes
+Number of Packets sent		: 640
+Total Time					: 53.61 secs
+Goodput					: 11011.42 bytes/sec
+
+4.
+Receiver:
+1740690866.6334476
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 625
+Total Bytes Transmitted		: 600384
+Total Time					: 55.46 secs
+
+Sender:
+1740690869.8108313
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 617700 bytes
+Overhead					: 27375 bytes
+Number of Packets sent		: 644
+Total Time					: 55.75 secs
+Goodput					: 10589.66 bytes/sec
+
+5.
+Receiver:
+1740691074.6047754
+Id:2 | Starting monitor on ('localhost', 8002).
+
+File transmission correct	: True
+Number of Packets Received	: 625
+Total Bytes Transmitted		: 600384
+Total Time					: 53.92 secs
+
+Sender:
+1740691077.1038637
+Id:1 | Starting monitor on ('localhost', 8001).
+
+File Size					: 590325 bytes
+Total Bytes Transmitted		: 608080 bytes
+Overhead					: 17755 bytes
+Number of Packets sent		: 634
+Total Time					: 54.21 secs
+Goodput					: 10888.77 bytes/sec
+

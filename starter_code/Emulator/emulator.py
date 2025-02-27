@@ -53,7 +53,7 @@ class config:
 # Emulator
 LOG_FILE_PATH = './emulator.log'
 HOST = ''
-PORT = '8001'
+PORT = '8000'
 nodes = None		# Dictionary to store the node information indexed by id
 Config = None	   # Holds all the configuration information
 
