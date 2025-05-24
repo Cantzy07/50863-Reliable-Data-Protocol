@@ -15,7 +15,6 @@ def listen_for_ack(send_monitor, max_packet_size, result_queue):
 	while not last_ack_received or eof:
 		receiver, ack_data = send_monitor.recv(max_packet_size)
 		if ack_data:
-			print("ack received")
 			result_queue.put(ack_data)
 
 if __name__ == '__main__':
@@ -59,12 +58,10 @@ if __name__ == '__main__':
 			while ack != "ACK":
 				while True:
 					send_monitor.send(receiver_id, data)
-					print("packet sent")
 					try:
 						ack_data = result_queue.get(timeout=max_time_to_wait)
 						# if acknowledgement is sent then break out to end loop
 						if ack_data:
-							print("ack received")
 							ack = ack_data.decode("utf-8")
 
 							if (eof):
@@ -72,7 +69,6 @@ if __name__ == '__main__':
 								
 							break
 					except queue.Empty:
-						print("resend packet")
 						break
 				
 	send_monitor.send_end(receiver_id)

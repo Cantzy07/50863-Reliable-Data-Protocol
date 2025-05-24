@@ -102,28 +102,40 @@ if __name__ == '__main__':
 		# continuously read file into the packet_queue
 		threading.Thread(target=read_file_into_queue, args=(file, send_monitor, receiver_id, max_payload_size, packet_queue), daemon=True).start()
 		# Sends packets continually
-		threading.Thread(target=send_packets, args=(lock, send_monitor, receiver_id, packet_queue, ack_buffer, ack_queue, max_time_to_wait), daemon=True).start()
+		# threading.Thread(target=send_packets, args=(lock, send_monitor, receiver_id, packet_queue, ack_buffer, ack_queue, max_time_to_wait), daemon=True).start()
 		# Listens for acknowledgements continually
 		threading.Thread(target=listen_for_ack, args=(lock, send_monitor, max_packet_size, ack_buffer), daemon=True).start()
 
 		# keep the loop until both packet and ack queues are empty ie. all packets sent and acknowledged
 		while not all_queues_empty or not eof:
-			# fill any empty buffer slots with packets from ack_queue and check if one is timed out
-			for i in range(window_size):
-				# if packet has been acknowledged then take it out of the buffer
-				with lock:
-					# fill the resent packet's slot with a new packet from the queue
-					if ack_buffer[i] is None:
-						if not packet_queue.empty():
-							ack_queue.put(i)
-					else:
-						# if packet has reached timeout time then assume it is dropped and resend
-						if time.time() - ack_buffer[i][2] >= max_time_to_wait:
-							send_monitor.send(receiver_id, ack_buffer[i][1])
-							# reset time since sent
-							ack_buffer[i] = (ack_buffer[i][0], ack_buffer[i][1], time.time())
+			try:
+				# fill any empty buffer slots with packets from ack_queue and check if one is timed out
+				for i in range(window_size):
+					# if packet has been acknowledged then take it out of the buffer
+					with lock:
+						# fill the resent packet's slot with a new packet from the queue
+						if ack_buffer[i] is None:
+							if not packet_queue.empty():
+								ack_queue.put(i)
+						else:
+							# if packet has reached timeout time then assume it is dropped and resend
+							if time.time() - ack_buffer[i][2] >= max_time_to_wait:
+								send_monitor.send(receiver_id, ack_buffer[i][1])
+								# reset time since sent
+								ack_buffer[i] = (ack_buffer[i][0], ack_buffer[i][1], time.time())
 
-			all_queues_empty = packet_queue.empty() and all(x is None for x in ack_buffer)
+				all_queues_empty = packet_queue.empty() and all(x is None for x in ack_buffer)
+
+				if not packet_queue.empty():
+					buffer_index = ack_queue.get(timeout=max_time_to_wait)
+					if (ack_buffer[buffer_index] is None):
+						packet_num, data_to_send = packet_queue.get()
+						send_monitor.send(receiver_id, data_to_send)
+						with lock:
+							ack_buffer[buffer_index] = (packet_num, data_to_send, time.time())
+
+			except queue.Empty:
+				continue
 
 	print("program end")		
 	send_monitor.send_end(receiver_id)

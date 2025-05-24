@@ -15,7 +15,6 @@ def listen_for_data(recv_monitor, max_packet_size, result_queue):
 	while not timeout_reached or not eof:
 		receiver, data = recv_monitor.recv(max_packet_size)
 		if data:
-			print(data)
 			result_queue.put(data)
 
 if __name__ == '__main__':
@@ -55,7 +54,6 @@ if __name__ == '__main__':
 				if decoded_data == b'EOF':
 					eof = True
 				elif old_data != decoded_data:
-					print(decoded_data)
 					file.write(decoded_data)
 					file.flush()
 					old_data = decoded_data
@@ -67,10 +65,8 @@ if __name__ == '__main__':
 			except queue.Empty:
 				if (eof):
 					timeout_reached = True
-					print("timeout")
 					break
 				else:
-					print("queue empty")
 					continue
 
 	print("end program")

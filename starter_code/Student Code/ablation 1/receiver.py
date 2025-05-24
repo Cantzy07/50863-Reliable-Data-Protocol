@@ -22,6 +22,7 @@ def get_packet_info(data):
 
 	if data == b'EOF':
 		eof = True
+		print("eof received")
 		return (-1, data)
 	else:
 		packet_num, message = data.split(b" ", 1)
@@ -51,11 +52,12 @@ if __name__ == '__main__':
 	transmission_delay = max_packet_size / link_bandwidth
 	window_size = min(50, (link_bandwidth * propagation_delay * 2) // max_packet_size)
 	# the amount of time it takes for a round trip for all packets assuming ack and data have max transmission time
-	max_time_to_wait = 2 * (propagation_delay * 2 + transmission_delay * 2)
+	max_time_to_wait = window_size // 6 * (propagation_delay * 2 + transmission_delay * 2)
 
 	with open(write_location, "wb", buffering=0) as file:
 		packet_dict = {}
 		packets_received = set()
+		packets_written = set()
 		counter = 1
 		file_transfer_started = False
 		result_queue = Queue()
@@ -67,36 +69,64 @@ if __name__ == '__main__':
 				file_transfer_started = True
 				packet_num, message = get_packet_info(data)
 
-				if counter == packet_num:
-					file.write(message)
-					file.flush()
-					counter += 1
-				else:
-					if (packet_num != -1 and packet_num not in packets_received):
-						packet_dict[packet_num] = message
-				
-				packets_received.add(packet_num)
-
-				while counter in packet_dict:
-					file.write(packet_dict[counter])
-					file.flush()
-					packet_dict.pop(counter)
-					counter += 1
-
-				if (packet_num != -1):
+				# if EOF already received and packet already received and written just ack it
+				if (packet_num in packets_written and eof):
+					# Remove selective ack only ack if in order
 					# Send an ack for the packet received
-					ack = "ACK " + str(packet_num)
+					ack = "FINISHED"
 					encoded_ack = ack.encode('utf-8')
 					recv_monitor.send(sender_id, encoded_ack)
 				
+				else:
+
+					if counter == packet_num:
+						file.write(message)
+						file.flush()
+						packets_written.add(counter)
+
+						# Remove selective ack only ack if in order
+						# Send an ack for the packet received
+						ack = "ACK " + str(counter)
+						encoded_ack = ack.encode('utf-8')
+						recv_monitor.send(sender_id, encoded_ack)
+
+						counter += 1
+					else:
+						if (packet_num != -1 and packet_num not in packets_received):
+							packet_dict[packet_num] = message
+					
+					packets_received.add(packet_num)
+
+					while counter in packet_dict:
+						file.write(packet_dict[counter])
+						file.flush()
+						packets_written.add(counter)
+						packet_dict.pop(counter)
+
+						# Remove selective ack only ack if in order
+						# Send an ack for the packet received
+						ack = "ACK " + str(counter)
+						encoded_ack = ack.encode('utf-8')
+						recv_monitor.send(sender_id, encoded_ack)
+
+						counter += 1
+				
 			except queue.Empty:
 				if (file_transfer_started and eof):
-					if packet_dict:
-						while counter in packet_dict:
-							file.write(packet_dict[counter])
-							file.flush()
-							packet_dict.pop(counter)
-							counter += 1
+					while counter in packet_dict:
+						written = True
+						file.write(packet_dict[counter])
+						file.flush()
+						packets_written.add(counter)
+						packet_dict.pop(counter)
+
+						# Remove selective ack only ack if in order
+						# Send an ack for the packet received
+						ack = "ACK " + str(counter)
+						encoded_ack = ack.encode('utf-8')
+						recv_monitor.send(sender_id, encoded_ack)
+
+						counter += 1
 					else:
 						timeout_reached = True
 						break

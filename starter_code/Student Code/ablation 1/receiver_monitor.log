@@ -1,0 +1,8 @@
+1742510558.746613
+Id:2 | Starting monitor on ('localhost', 8002).
+
+Received file and original have differing number of lines.
+File transmission correct	: False
+Number of Packets Received	: 578
+Total Bytes Transmitted		: 981243
+Total Time					: 29.49 secs

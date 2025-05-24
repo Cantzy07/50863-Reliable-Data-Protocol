@@ -32,10 +32,14 @@ def read_file_into_queue(file, send_monitor, receiver_id, max_payload_size, pack
 def listen_for_ack(lock, send_monitor, max_packet_size, ack_buffer):
 	global eof
 	global all_queues_empty
+	global force_quit
 
 	while not all_queues_empty or not eof:
 		receiver, ack_data = send_monitor.recv(max_packet_size)
 		ack_data = ack_data.decode('utf-8')
+		if "FINISHED" in ack_data:
+			force_quit = True
+			break
 		ack_num = int(ack_data.split()[1])
 		if "ACK" in ack_data:
 			for i in range(len(ack_buffer)):
@@ -43,6 +47,7 @@ def listen_for_ack(lock, send_monitor, max_packet_size, ack_buffer):
 					with lock:
 						ack_buffer[i] = None
 						break	
+
 		
 # tuple (packetNum, data, time)
 def send_packets(lock, send_monitor, receiver_id, packet_queue, ack_buffer, ack_queue, max_time_to_wait):
@@ -91,6 +96,9 @@ if __name__ == '__main__':
 		global all_queues_empty
 		all_queues_empty = False
 
+		global force_quit
+		force_quit = False
+
 		packet_queue = Queue(maxsize=window_size)
 		# tuple (packet data, time sent) holds the oldest packets (window_size amount)
 		ack_buffer = [None for i in range(window_size)]
@@ -108,6 +116,8 @@ if __name__ == '__main__':
 
 		# keep the loop until both packet and ack queues are empty ie. all packets sent and acknowledged
 		while not all_queues_empty or not eof:
+			if force_quit:
+				break
 			# fill any empty buffer slots with packets from ack_queue and check if one is timed out
 			for i in range(window_size):
 				# if packet has been acknowledged then take it out of the buffer

@@ -51,7 +51,7 @@ if __name__ == '__main__':
 	transmission_delay = max_packet_size / link_bandwidth
 	window_size = min(50, (link_bandwidth * propagation_delay * 2) // max_packet_size)
 	# the amount of time it takes for a round trip for all packets assuming ack and data have max transmission time
-	max_time_to_wait = 2 * (propagation_delay * 2 + transmission_delay * 2)
+	max_time_to_wait = window_size // 6 * (propagation_delay * 2 + transmission_delay * 2)
 
 	with open(write_location, "wb", buffering=0) as file:
 		packet_dict = {}
